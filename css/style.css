@@ -238,6 +238,7 @@ body.mouse .menu a:focus {
 .menu__link {
 }
 .menu__arrow {
+    top: 48%;
 }
 /*\/\/\/\/\/*/
 .sub-menu {
@@ -445,20 +446,78 @@ body.mouse .menu a:focus {
     border-bottom: 1px solid #E4E4E4;
 }
 .recipes__container {
-    padding-left: 60px;
-    padding-right: 60px;
 }
 .recipes__header {
 }
 .recipes__slider {
 }
-/* slider */
+.btn__recipes {
+    text-align: center;
+}
+/* slider---- */
 .slider-recipes {
-    display: flex;
-    flex-wrap: nowrap;
-    overflow: hidden;
-    margin: 0 -8px 50px;
+    position: relative;
     padding: 0 60px;
+    margin-bottom: 50px;
+}
+.slider-recipes .slick-list {
+    overflow: hidden;
+}
+.slider-recipes .slick-track {
+    display: flex;
+    margin: 0 -8px;
+}
+.slider-recipes .slick-arrow {
+    position: absolute;
+    top: 50%;
+    width: 40px;
+    height: 40px;
+
+    font-size: 0;
+    color: transparent;
+
+    cursor: pointer;
+    border-radius: 50%;
+    border: 1px solid #067A46;
+    transform: translateY(-50%);
+}
+.slider-recipes .slick-arrow::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    display: block;
+    width: 8px;
+    height: 8px;
+
+    cursor: pointer;
+    border-right: 2px solid #067A46;
+    border-bottom: 2px solid #067A46;
+    transform: translate(-50%, -50%) rotate(135deg);
+    -o-transform: translate(-50%, -50%) rotate(135deg);
+    -moz-transform: translate(-50%, -50%) rotate(135deg);
+    -webkit-transform: translate(-50%, -50%) rotate(135deg);
+
+    transition: transform linear .2s;
+    -o-transition: transform linear .2s;
+    -moz-transition: transform linear .2s;
+    -webkit-transition: transform linear .2s;
+}
+.slider-recipes .slick-prev {
+    left: 0;
+}
+.slider-recipes .slick-prev::after {
+    left: 55%;
+}
+.slider-recipes .slick-next {
+    right: 0;
+}
+.slider-recipes .slick-next::after {
+    left: 45%;
+    transform: translate(-50%, -50%) rotate(-45deg);
+    -o-transform: translate(-50%, -50%) rotate(-45deg);
+    -moz-transform: translate(-50%, -50%) rotate(-45deg);
+    -webkit-transform: translate(-50%, -50%) rotate(-45deg);
 }
 .slider-recipes__col {
     padding: 0 8px;
@@ -466,11 +525,7 @@ body.mouse .menu a:focus {
 .slider-recipes__item {
     position: relative;
 }
-.btn__recipes {
-    text-align: center;
-}
 .slider-recipes__img {
-    /* Буду натягивать слайдер и стили поменяются */
 }
 .slider-recipes__info {
     width: 100%;
@@ -631,19 +686,29 @@ body.mouse .menu a:focus {
     border-bottom: 2px solid #242424;
     transform: translate(-50%, -70%) rotate(-45deg);
 }
-.questions__name {
+.questions__control {
     display: flex;
     align-items: center;
+    cursor: pointer;
+}
+.question__name {
     font-weight: 600;
     line-height: 150%;
 }
 .questions__text {
-    display: none;
-    margin-top: 32px;
+    box-sizing: content-box;
+    max-height: 0;
+    overflow: hidden;
     padding-left: 56px;
 
     line-height: 130%;
     color: #404040;
+
+    transition: max-height linear .5s, padding-top linear .5s;
+    will-change: max-height;
+}
+.open .questions__text {
+    padding-top: 32px;
 }
 
 
@@ -852,6 +917,23 @@ body.mouse .menu a:focus {
     }
 
 
+    /* Recipes --------------------------------------------- */
+    .slider-recipes {
+        padding: 0px 0px 10px 0px;
+        margin: 0px 0px 55px 0px;
+    }
+    .slider-recipes__col {
+        display: flex;
+        justify-content: center;
+        min-width: 0;
+    }
+    .slider-recipes__img {
+        max-width: 100%;
+        height: auto;
+        object-fit: cover;
+    }
+
+    
     /* Images ---------------------------------------------- */
     .images__col {
         flex-basis: 50%;
@@ -941,6 +1023,27 @@ body.mouse .menu a:focus {
     /* Advantage ------------------------------------------ */
     .advantage__col {
         flex-basis: 100%;
+    }
+
+    /* Recipes --------------------------------------------- */
+    .slider-recipes .slick-arrow {
+        top: 100%;
+        left: 50%;
+    }
+    .slider-recipes .slick-prev {
+        transform: translateX(-60px);
+    }
+    .slider-recipes .slick-next {
+        transform: translateX(20px);
+    }
+    .slider-recipes .slick-track {
+        margin: 0;
+    }
+    .slider-recipes__col {
+        display: flex;
+        justify-content: center;
+        min-width: 0;
+        padding: 0;
     }
 
 

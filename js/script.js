@@ -13,12 +13,14 @@ let pageBody = document.querySelector('body');
 // Бургер меню ------------------------
 document.querySelector('#burger').onclick = showMenu;
 function showMenu() {
+
     document.querySelector('#menu').classList.toggle('active')
     pageBody.classList.toggle('hidden')
 }
 
 // Выпадающее меню ------------------------
 if(isMobile.any()) {
+
     pageBody.classList.add('touch');
     let arrows = document.querySelectorAll('.arrow');
 
@@ -39,7 +41,7 @@ if(isMobile.any()) {
             }
         }
     }
-
+    
 } else {
     pageBody.classList.add('mouse');
 }
@@ -51,3 +53,73 @@ if(isMobile.any()) {
         arrow.previousElementSibling.style.paddingRight = '30px';
     }
 })();
+
+// Аккордеон
+(function() {
+    const accordeons = document.querySelectorAll('[data-accordeon]');
+
+    for (let accordeon of accordeons) {
+        accordeon.onclick = function() {
+            const control = accordeon.querySelector('.questions__control')
+            const content = accordeon.querySelector('.questions__text')
+
+            accordeon.classList.toggle('open');
+            if(accordeon.classList.contains('open')) {
+                control.setAttribute('aria-expanded', 'true')
+                content.setAttribute('aria-hidden', 'false')
+                content.style.maxHeight = content.scrollHeight + 'px';
+            } else {
+                control.setAttribute('aria-expanded', 'false')
+                content.setAttribute('aria-hidden', 'true')
+                content.style.maxHeight = null;
+            }
+        }
+    }
+})()
+
+
+
+
+
+
+
+// jquery ------------------------------------------------------
+$(document).ready(function(){
+
+// Slider init
+    $('.slider-recipes').slick({
+        infinite: true,
+        variableWidth: true,
+
+        responsive: [
+            {
+                breakpoint: 992,
+                settings: {
+                    slidesToShow: 3,
+                    slidesToScroll: 1,
+                    variableWidth: false,
+                },
+
+            },
+            {
+                breakpoint: 768,
+                settings: {
+                    slidesToShow: 2,
+                    slidesToScroll: 1,
+                    variableWidth: false,
+                },
+
+            },
+            {
+                breakpoint: 575,
+                settings: {
+                    slidesToShow: 1,
+                    slidesToScroll: 1,
+                    variableWidth: false,
+                },
+
+            },
+        ]
+    });
+
+});
