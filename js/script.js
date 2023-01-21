@@ -76,19 +76,21 @@ if(isMobile.any()) {
     }
 })();
 
+
+
 // Аккордеон
 (function() {
     const accordeons = document.querySelectorAll('[data-accordeon]');
 
     for (let accordeon of accordeons) {
         accordeon.onclick = function() {
-            const control = accordeon.querySelector('.questions__control')
-            const content = accordeon.querySelector('.questions__text')
+            const control = accordeon.querySelector('.questions__control');
+            const content = accordeon.querySelector('.questions__text');
 
             accordeon.classList.toggle('open');
             if(accordeon.classList.contains('open')) {
-                control.setAttribute('aria-expanded', 'true')
-                content.setAttribute('aria-hidden', 'false')
+                control.setAttribute('aria-expanded', 'true');
+                content.setAttribute('aria-hidden', 'false');
                 content.style.maxHeight = content.scrollHeight + 'px';
             } else {
                 control.setAttribute('aria-expanded', 'false')
@@ -98,6 +100,8 @@ if(isMobile.any()) {
         }
     }
 })()
+
+
 
 
 
