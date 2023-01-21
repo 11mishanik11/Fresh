@@ -7,8 +7,30 @@ let isMobile = {
 	any: function() {return (isMobile.Android() || isMobile.BlackBerry() || isMobile.iOS() || isMobile.Opera() || isMobile.Windows());}
 };
 // Основные переменные
-let pageBody = document.querySelector('body');
+const pageBody = document.querySelector('body');
+const pageHeader = document.querySelector('#header');
 // --------------------------------------------
+
+// Фиксированая шапка
+headerFixed();
+window.onscroll = headerFixed;
+function headerFixed() {
+    let countScroll = window.scrollY;
+    let headerHeight = pageHeader.offsetHeight;
+
+    if(countScroll > 0) {
+        if(!pageHeader.classList.contains('fixed')) { 
+            // Работает только если у шапки нет класса 'fixed'
+            pageHeader.classList.add('fixed');
+            pageBody.style.paddingTop = headerHeight + 'px';
+            console.log('work');
+        }
+
+    } else {
+        pageHeader.classList.remove('fixed');
+        pageBody.style.paddingTop = null;
+    }
+}
 
 // Бургер меню ------------------------
 document.querySelector('#burger').onclick = showMenu;
